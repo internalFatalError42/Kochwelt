@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kochwelt</title>
+    <link rel="icon" type="image/x-icon" href="img/logo_small.png">
+    <link type="text/css" href="style.css" rel="stylesheet" media="screen">
+</head>
+<body>
+    <header id="header">
+        <a class="logo" href="#start-page" id="header-logo">
+            <img src="img/logo.png" alt="logo">
+        </a>
+        <img class="menu-logo" id="menu-logo" src="img/icons/bars-solid.svg" alt="menu" onclick="toggleMenu()">
+        <nav class="header-menu" id="header-menu">
+            <a id="start-link" class="start-link" href="#start-page">Start</a>
+            <a id="receipt-of-the-day-link" class="receipt-of-the-day-link" href="#receipt-of-the-day">Rezept des Tages</a>
+            <a id="contact-link" class="contact-link" href="#contact">Kontakt</a>
+            <a id="impressum-link" class="impressum-link" href="#impressum">Impressum</a>
+            <img src="img/icons/xmark-solid.svg" class="close-button" id="close-button"></img>
+        </nav>
+    </header>
+
+    <main class="start-page" id="start-page">
+        <section class="section1">
+            <div class="image">
+                <img src="img/carbonnara.jpg" alt="Carbonara">
+            </div>
+            <div class="text">
+                <div class="text-box">
+                    <h2>Carbonara</h2>
+                    <p>EIn leckeres Nudelgericht, das schnell zubereitet ist.</p>
+                </div>
+                <div class="text-button">
+                    <a href="#receipt-page" id="receipt-01" data-receipt="1">Rezept öffnen</a>
+                </div>
+            </div>
+        </section>
+    
+        <section class="section2">      
+            <h2>Lust auf was Neues?</h2> 
+            <div class="newfood">
+                <div>
+                    <a href="#receipt-page" id="receipt-0" data-receipt="0">
+                        <img src="img/nudelsalat.jpg" alt="Nudelsalat">
+                    </a>
+                    <p>Nudelsalat</p>
+                </div>
+                <div>
+                    <a href="#receipt-page" id="receipt-1" data-receipt="1">
+                        <img src="img/carbonnara.jpg" alt="Carbonara">
+                    </a>
+                    <p>Spaghetti Carbonnara</p>
+                </div>
+                <div>
+                    <a href="#receipt-page"  id="receipt-2" data-receipt="2">
+                        <img src="img/crepes.jpg" alt="Crepes">
+                    </a>
+                    <p>Frische Crepés</p>
+                </div>      
+            </div>
+        </section>
+    
+        <section class="section3">
+            
+            <h2>Pfanne vs Wok - Was ist besser?</h2>
+            <div>
+                <p>Die Pfanne und der Wok sind unterschiedliche Kochutensilien mit spezifischen Merkmalen und Anwendungen. Die Pfanne ist vielseitig, mit einem flachen Boden und leicht abfallenden Seiten, ideal für Braten, Sautieren, Schmoren und Kochen von Saucen. Pfannen gibt es in verschiedenen Materialien wie Edelstahl, Gusseisen oder mit Antihaftbeschichtungen.
+                    <br>
+                    <br>
+                    Der Wok hingegen hat einen runden Boden und hohe, abfallende Seiten, was ihn besonders für die asiatische Küche prädestiniert. Die einzigartige Form ermöglicht schnelles und gleichmäßiges Erhitzen bei hohen Temperaturen, perfekt für das schnelle Rühren und Braten. Woks sind oft aus Materialien wie Kohlenstoffstahl gefertigt.
+                    <br>
+                    <br>
+                    In Bezug auf Kochtechniken eignet sich die Pfanne für eine breite Palette von Anwendungen, von langsamen Kochmethoden bis hin zu schnellen Bratvorgängen. Die Wok-Kochtechnik konzentriert sich hauptsächlich auf das Stir-Frying, bei dem Zutaten schnell bei hoher Hitze gerührt werden.
+                    <br>
+                    <br>
+                    Die Wahl zwischen Pfanne und Wok hängt von den bevorzugten Kochstilen und den zuzubereitenden Gerichten ab. Beide haben ihren Platz in der Küche, wobei die Pfanne in westlichen Küchen und der Wok in asiatischen Küchen häufig verwendet wird. Es ist sinnvoll, beide in der Küche zu haben, um die Vielseitigkeit zu maximieren und unterschiedliche kulinarische Herausforderungen zu bewältigen.
+                    <br>
+                    <br>
+                </p>
+            
+                <img src="img/wok.jpg" alt="wok">
+            </div>
+        </section>
+    </main>
+
+    <main class="receipt-of-the-day" id="receipt-of-the-day">
+        <section class="receipt-head" id="receipt-of-the-day-box">
+            <h2 class="receipt-name" id="receipt-of-the-day-name"></h2>
+            <img class="receipt-image" id="receipt-of-the-day-image" src="" alt="">
+            <input type="hidden" id="receipt-of-the-day-Id" value="">
+            <div class="icons">
+                <div class="receipt-duration">
+                    <img class="icon" src="img/icons/clock-regular.svg" alt="duration">
+                    <p class="duration" id="receipt-of-the-day-duration"></p>
+                </div>
+                <div class="receipt-difficulty">
+                    <img class="icon" src="img/icons/brain-solid.svg" alt="difficulty">
+                    <p class="difficulty" id="receipt-of-the-day-difficulty"></p>
+                </div>
+                <div class="receipt-created">
+                    <img class="icon" src="img/icons/calendar-alt-regular.svg" alt="created">
+                    <p class="created" id="receipt-of-the-day-created"></p>
+                </div>
+            </div>
+        </section>
+        <section class="receipt-ingredients">
+            <div class="amount-row">
+                <label for="amount">Zutaten für</label>
+                <input type="number" min="1" max="999" class="amount" id="receipt-of-the-day-amount" placeholder="Anzahl" required value="1">
+                <button class="calculate-amount" id="receipt-of-the-day-calculate-amount">Portionen</button>
+            </div>
+            <table class="ingredients" id="receipt-of-the-day-ingredients"></table>
+        </section>
+        <section class="receipt-preparation">
+            <h2>Zubereitung</h2>
+            <div class="duration-row">
+                <div class="preparation">
+                    <img class="icon" src="img/icons/clock-regular.svg" alt="utensils">
+                    <p class="preparation-text" id="receipt-of-the-day-preparation-text"></p>
+                </div>
+                <div class="duration">
+                    <img class="icon" src="img/icons/clock-regular.svg" alt="utensils">
+                    <p class="duration-text" id="receipt-of-the-day-duration-text"></p>
+                </div>
+            </div>
+            <p class="preparation-description" id="receipt-of-the-day-preparation-description"></p>
+            <h3>Rezept erstellt von</h3>
+            <div class="creator">
+                <img class="avatar" src="img/profile.png" alt="creator">
+                <p class="creator-text" id="receipt-of-the-day-creator-text"></p>
+            </div>
+        </section>
+    </main>
+
+    <main class="receipt-page" id="receipt-page">
+        <section class="receipt-head" id="receipt-of-the-day-box">
+            <h2 class="receipt-name" id="receipt-name"></h2>
+            <img class="receipt-image" id="receipt-image" src="" alt="">
+            <input type="hidden" id="receiptId" value="">
+            <div class="icons">
+                <div class="receipt-duration">
+                    <img class="icon" src="img/icons/clock-regular.svg" alt="duration">
+                    <p class="duration" id="duration"></p>
+                </div>
+                <div class="receipt-difficulty">
+                    <img class="icon" src="img/icons/brain-solid.svg" alt="difficulty">
+                    <p class="difficulty" id="difficulty"></p>
+                </div>
+                <div class="receipt-created">
+                    <img class="icon" src="img/icons/calendar-alt-regular.svg" alt="created">
+                    <p class="created" id="created"></p>
+                </div>
+            </div>
+        </section>
+        <section class="receipt-ingredients">
+            <div class="amount-row">
+                <label for="amount">Zutaten für</label>
+                <input type="number" min="1" max="999" class="amount" id="amount" placeholder="Anzahl" required value="1">
+                <button class="calculate-amount" id="calculate-amount">Portionen</button>
+            </div>
+            <table class="ingredients" id="ingredients"></table>
+        </section>
+        <section class="receipt-preparation">
+            <h2>Zubereitung</h2>
+            <div class="duration-row">
+                <div class="preparation">
+                    <img class="icon" src="img/icons/clock-regular.svg" alt="utensils">
+                    <p class="preparation-text" id="preparation-text"></p>
+                </div>
+                <div class="duration">
+                    <img class="icon" src="img/icons/clock-regular.svg" alt="utensils">
+                    <p class="duration-text" id="duration-text"></p>
+                </div>
+            </div>
+            <p class="preparation-description" id="preparation-description"></p>
+            <h3>Rezept erstellt von</h3>
+            <div class="creator">
+                <img class="avatar" src="img/profile.png" alt="creator">
+                <p class="creator-text" id="creator-text"></p>
+            </div>
+        </section>
+    </main>
+
+    <main class="contact" id="contact">
+        <section class="contact-box" id="contact-box">
+            <form onsubmit="sendMail(event)" method="POST" id="Kontaktanfrage" class="leftside">
+                <h1>Kontaktanfrage</h1>
+                <label for="email">Deine E-Mail Adresse: </label>
+                <input type="email" name="email" id="email" placeholder="E-Mail eingeben..." required autocomplete="off">
+
+                <label for="select">Wähle eine Kategorie: </label>
+
+                <select id="select" name="select" required>
+                    <option value="">-bitte auswählen-</option>
+                    <option value="Reservierung">Reservierung</option>
+                    <option value="Reklamation">Reklamation</option>
+                    <option value="Bewerbung">Bewerbung</option>
+                    <option value="Feedback">Feedback</option>
+                </select>
+
+                <label for="message">Deine Nachricht: </label>
+                <textarea name="message" id="message" placeholder="Nachricht eingeben..." autocomplete="off"></textarea>
+
+                <div class="datenschutztxt">
+                    <input type="checkbox" class="Datenschutz" id="Datenschutz" required>
+                    <a href="#data-privacy">Datenschutzbestimmungen</a>
+                    <p>annehmen</p>
+                </div>
+
+                <div class="button-center">
+                    <input type="submit" class="button" id="send-button" disabled="disabled" value="Senden">
+                </div>
+            </form>
+            <iframe class="maps" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2450.3755251836074!2d8.1592463!3d52.1092958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b9f36d162924ad%3A0x249c3b2f78f69efa!2sKochwelt!5e0!3m2!1sde!2sde!4v1705642695699!5m2!1sde!2sde" width="" height="" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+    </main>
+
+    <main class="impressum" id="impressum">
+        <section class="company-data" id="company-data"></section>
+    </main>
+
+    <main class="data-privacy" id="data-privacy">
+        <section class="data-privacy-textbox" id="data-privacy-textbox"></section>
+    </main>
+
+    <footer>
+        <nav class="side-links">
+            <a href="#data-privacy" id="data-privacy-footer-link">Datenschutz</a>
+            <a href="#contact" id="contact-footer-link">Kontakt</a>
+            <a href="#impressum" id="impressum-footer-link">Impressum</a>
+        </nav>
+        <nav class="social-media">
+            <a href="https://www.facebook.com/?locale=de_DE"><img class="icon" src="img/facebook_white.png" alt="facebook"></a>
+            <a href="https://twitter.com/?lang=de"><img class="icon" src="img/twitter_white.png" alt="twitter"></a>
+            <a href="https://www.instagram.com/"><img class="icon" src="img/instagram_white.png" alt="instagram"></a>
+        </nav>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
