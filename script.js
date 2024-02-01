@@ -632,7 +632,7 @@ const sendMail = function (event) {
             'Accept': 'application/json'
         }
     }).then(() => {
-        document.getElementById("contact-box").innerHTML = "<h1>Kontaktanfrage</h1><br><p><b>Ihr Nachricht wurde gesendet</b></p>";
+        document.getElementById("contact-box").innerHTML = "<h1>Kontaktanfrage</h1><br><p><b>Ihre Nachricht wurde gesendet</b></p>";
         
         setTimeout(function () {
             location.reload();
