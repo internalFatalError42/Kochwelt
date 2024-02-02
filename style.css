@@ -237,10 +237,8 @@ section {
                 }
                 
                 p {
-                    font-size: 12px;
+                    font-size: 16px;
                     text-align: center;
-                    font-weight: bold;
-                    margin: 0 32px;
                     margin: 16px 0;
                 }
             }
@@ -293,7 +291,7 @@ section {
         width: 100%;
 
         .icon {
-            height: 17px;
+            height: 16px;
         }
 
         .receipt-image {
@@ -339,6 +337,30 @@ section {
                 padding: 4px;
                 border: 1px solid #F0F0F0;
                 width: 80px;
+
+                &:hover + .tooltiptext {
+                    visibility: visible;
+                }
+            }
+              
+            .tooltiptext {
+                visibility: hidden;
+                background-color: rgba(64, 59, 59, 1);;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: .5rem;
+                position: absolute;
+                z-index: 1;
+                margin-bottom: 64px;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    border-width: 5px;
+                    border-style: solid;
+                    border-color: #292929 transparent transparent transparent;
+                }
             }
 
             .calculate-amount {
@@ -470,6 +492,17 @@ section {
             width: 112px;
             margin-left: 24px;
             margin-right: 24px;
+            border-color: rgb(230, 230, 230);
+            background-color: rgb(230, 230, 230);
+            color: black;
+            border-radius: 0;
+        }
+
+        .active-button {
+            width: 112px;
+            margin-left: 24px;
+            margin-right: 24px;
+            border-color: green;
             background-color: green;
             color: white;
             border-radius: 0;

@@ -111,7 +111,8 @@
         <section class="receipt-ingredients">
             <div class="amount-row">
                 <label for="amount">Zutaten für</label>
-                <input type="number" min="1" max="999" class="amount" id="receipt-of-the-day-amount" placeholder="Anzahl" required value="1">
+                <input type="number" min="1" max="20" class="amount" id="receipt-of-the-day-amount" placeholder="Anzahl" required value="1">
+                <span class="tooltiptext">maximal für 20 Personen</span>
                 <button class="calculate-amount" id="receipt-of-the-day-calculate-amount">Portionen</button>
             </div>
             <table class="ingredients" id="receipt-of-the-day-ingredients"></table>
@@ -160,7 +161,8 @@
         <section class="receipt-ingredients">
             <div class="amount-row">
                 <label for="amount">Zutaten für</label>
-                <input type="number" min="1" max="999" class="amount" id="amount" placeholder="Anzahl" required value="1">
+                <input type="number" min="1" max="20" class="amount" id="amount" placeholder="Anzahl" required value="1">
+                <span class="tooltiptext">maximal für 20 Personen</span>
                 <button class="calculate-amount" id="calculate-amount">Portionen</button>
             </div>
             <table class="ingredients" id="ingredients"></table>
@@ -204,7 +206,7 @@
                 </select>
 
                 <label for="message">Deine Nachricht: </label>
-                <textarea name="message" id="message" placeholder="Nachricht eingeben..." autocomplete="off" tabindex="3"></textarea>
+                <textarea name="message" id="message" placeholder="Nachricht eingeben..." autocomplete="off" tabindex="3" required></textarea>
 
                 <div class="datenschutztxt">
                     <input type="checkbox" class="Datenschutz" id="Datenschutz" required tabindex="4">

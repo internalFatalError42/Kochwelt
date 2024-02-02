@@ -82,7 +82,6 @@ const crepes = new Receipt(
         butter
 
     ],
-
     'Ein leckerer Salat, der sich gut als Beilage zu Gegrilltem eignet.',
     'Für den Teig Mehl mit Zucker und Salz vermischen. Eier und Milch hinzufügen und mit einem Schneebesen oder dem Handrührgerät zu einem glatten Teig verrühren. Der Teig ist relativ dünnflüssig, damit er auf dem Crêpes-Maker möglichst dünn verstrichen werden kann.Crêpes-Maker auf mittlerer bis hoher Stufe erhitzen und mit etwas Butter oder Fett bestreichen. Wenn deine Crêpes-Platte antihaft-beschichtet ist, musst du dies nur einmal zu Beginn machen.Falls du keinen Crêpes-Maker hast, kannst du die Crêpes auch in einer Pfanne ausbacken. Am besten hat die Pfanne einen möglichst niedrigen Rand.',
     'Ertan'
@@ -96,6 +95,7 @@ const receiptList = [
 
 // creates the receipt
 const loadReceipt = function (amount = 1, receiptNumber = localStorage.getItem('receipt')) {
+    receiptNumber = receiptNumber === null ? 1 : receiptNumber;
     const receipt = receiptList[receiptNumber];
     document.getElementById('receipt-name').innerHTML = receipt.getName();
     document.getElementById('receipt-image').src = receipt.getImage();
@@ -157,7 +157,7 @@ document.getElementById('receipt-of-the-day-calculate-amount').onclick = functio
     let amount = document.getElementById('receipt-of-the-day-amount').value;
     let receiptNumber = document.getElementById('receipt-of-the-day-Id').value;
 
-    if (amount > 0 && amount < 1000) {
+    if (amount > 0 && amount <= 20) {
         loadReceiptOfTheDay(amount, receiptNumber);
     } else {
         loadReceiptOfTheDay(1, receiptNumber);
@@ -194,12 +194,13 @@ document.getElementById('Datenschutz').onclick = function () {
 
     if (document.getElementById('Datenschutz').checked) {
         setInterval(function () {
-            countdown--;
+            sendButton.value = countdown;
             if (countdown >= 0) {
-                sendButton.value = countdown;
+                countdown--;
             } else {
                 sendButton.disabled = false;
                 sendButton.value = 'Senden';
+                sendButton.classList.add('active-button');
                 clearInterval(this);
             }
         }, 1_000);
