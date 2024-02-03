@@ -80,7 +80,6 @@ const crepes = new Receipt(
         egg,
         milk,
         butter
-
     ],
     'Ein leckerer Salat, der sich gut als Beilage zu Gegrilltem eignet.',
     'Für den Teig Mehl mit Zucker und Salz vermischen. Eier und Milch hinzufügen und mit einem Schneebesen oder dem Handrührgerät zu einem glatten Teig verrühren. Der Teig ist relativ dünnflüssig, damit er auf dem Crêpes-Maker möglichst dünn verstrichen werden kann.Crêpes-Maker auf mittlerer bis hoher Stufe erhitzen und mit etwas Butter oder Fett bestreichen. Wenn deine Crêpes-Platte antihaft-beschichtet ist, musst du dies nur einmal zu Beginn machen.Falls du keinen Crêpes-Maker hast, kannst du die Crêpes auch in einer Pfanne ausbacken. Am besten hat die Pfanne einen möglichst niedrigen Rand.',
@@ -103,20 +102,12 @@ const loadReceipt = function (amount = 1, receiptNumber = localStorage.getItem('
     document.getElementById('duration').innerHTML = receipt.getDuration() + ' Min';
     document.getElementById('difficulty').innerHTML = receipt.getDifficulty();
     document.getElementById('created').innerHTML = receipt.getCreated();
-
-    const ingredients = receipt.getIngredients();
-    let ingredient = ``;
-
-    ingredients.forEach(element => {
-        ingredient += `<tr><td>${element.getAmount() > 0 ? element.getAmount() * amount : ''} ${element.getUnit()} ${element.getIngredient()} ${element.getDescription()}</td></tr>`;
-    });
-    document.getElementById('ingredients').innerHTML = ingredient;
-
+    document.getElementById('ingredients').innerHTML = loadIngredient(receipt.getIngredients(), amount);
     document.getElementById('preparation-text').innerHTML = `ca ${receipt.getPreparationTime()} Minuten`;
     document.getElementById('duration-text').innerHTML = `Gesamtzeit ca ${receipt.getDuration()} Minuten`;
     document.getElementById('preparation-description').innerHTML = receipt.getPreparationDescription();
     document.getElementById('creator-text').innerHTML = receipt.getAuthor();
-}
+};
 
 const loadReceiptOfTheDay = function (amount = 1, receiptNumber = 1) {
     const receipt = receiptList[receiptNumber];
@@ -126,20 +117,22 @@ const loadReceiptOfTheDay = function (amount = 1, receiptNumber = 1) {
     document.getElementById('receipt-of-the-day-duration').innerHTML = receipt.getDuration() + ' Min';
     document.getElementById('receipt-of-the-day-difficulty').innerHTML = receipt.getDifficulty();
     document.getElementById('receipt-of-the-day-created').innerHTML = receipt.getCreated();
-
-    const ingredients = receipt.getIngredients();
-    let ingredient = ``;
-
-    ingredients.forEach(element => {
-        ingredient += `<tr><td>${element.getAmount() > 0 ? element.getAmount() * amount : ''} ${element.getUnit()} ${element.getIngredient()} ${element.getDescription()}</td></tr>`;
-    });
-    document.getElementById('receipt-of-the-day-ingredients').innerHTML = ingredient;
-
+    document.getElementById('receipt-of-the-day-ingredients').innerHTML = loadIngredient(receipt.getIngredients(), amount);
     document.getElementById('receipt-of-the-day-preparation-text').innerHTML = `ca ${receipt.getPreparationTime()} Minuten`;
     document.getElementById('receipt-of-the-day-duration-text').innerHTML = `Gesamtzeit ca ${receipt.getDuration()} Minuten`;
     document.getElementById('receipt-of-the-day-preparation-description').innerHTML = receipt.getPreparationDescription();
     document.getElementById('receipt-of-the-day-creator-text').innerHTML = receipt.getAuthor();
-}
+};
+
+const loadIngredient = function (ingredients, amount = 1) {
+    let ingredientHTML = ``;
+
+    ingredients.forEach(element => {
+        ingredientHTML += `<tr><td>${element.getAmount() > 0 ? element.getAmount() * amount : ''} ${element.getUnit()} ${element.getIngredient()} ${element.getDescription()}</td></tr>`;
+    });
+
+    return ingredientHTML;
+};
 
 document.getElementById('calculate-amount').onclick = function () {
     let amount = document.getElementById('amount').value;
@@ -187,6 +180,8 @@ const sendMail = function (event) {
         console.log(error);
     });
 };
+
+document.getElementById('Kontaktanfrage').onsubmit = sendMail;
 
 document.getElementById('Datenschutz').onclick = function () {
     let sendButton = document.getElementById('send-button');
